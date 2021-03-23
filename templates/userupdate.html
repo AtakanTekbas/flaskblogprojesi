@@ -1,0 +1,34 @@
+{% extends 'admin.html' %}
+{% block title %} USERUPDATE {% endblock %}
+{% block admincontent %}
+    <form action ="/admin/userupdate" method="POST">  
+        
+        <div class="forming" style="width: 430px;height:auto;margin-left:35%">
+            <div> <p><b>SELECT AN USER</b> </p></div>
+        <div>
+            <label style="display: inline-block;width:160px;">Username:</label>
+            <input type="username" name="username"> <br>
+        </div>
+        <label style="margin-left: 45%;font-size:21px;"> <b>OR</b></label> <br>
+        <div>
+            <label style="display: inline-block;width:160px;">Email:</label>
+            <input type="email" name="email">
+        </div>
+        
+            <p>Select an action:</p>
+            <div class="userupdateaction">    
+            <input type="radio" id="authorize" name="authorize" value="authorize">
+            <label style="margin-right:10px;" for="authorize">Authorize</label><br>
+            <input type="radio" id="unauthorize" name="authorize" value="unauthorize">
+            <label style="margin-right:30px;"for="unauthorize">Unauthorize</label><br>
+            <input type="radio" id="ban" name="authorize" value="ban">
+            <label for="ban">Ban</label><br>
+            <input type="radio" id="unban" name="authorize" value="unban">
+            <label for="unban">Unban</label><br>
+         </div>
+         <div style="margin:10px 0px 15px 145px;"> 
+            <input style="width: 130px;height: 30px; border-radius:11px;" type="submit" value="Update User">
+        </div>
+        </div>
+    </form>
+{% endblock%}

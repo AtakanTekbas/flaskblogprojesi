@@ -1,0 +1,42 @@
+{% extends 'home.html' %}
+{% block title %} Delete an article {% endblock %}
+{% block content %}
+
+    <div class="forming" style="height: 100px;width:412px;padding:20px;margin-left:38%">
+        <form action="/author/deletearticle" method="POST">
+
+            <h3 style="margin: 0;margin-left:120px;">Delete an article</h3>
+            <p style="display:inline-block;width:180px;"> <b>Select the article:</b></p>
+            
+            <select name="delete" id="delete">
+            </select>
+
+                {% block javascript %}
+                <script>
+                     
+                    function selectarticle() 
+                    {
+                        var ExtraJson = '{{Extra|tojson|safe}}';
+                        var ExtraParsed = JSON.parse(ExtraJson);                                                                             
+                        var select = document.getElementById("delete");
+                        for (var i=0; i<ExtraParsed.length;i++)
+                        {
+                        var option = document.createElement("option");
+                        option.text = ExtraParsed[i];    
+                        option.value = ExtraParsed[i];                    
+                        select.add(option);}
+                        }
+                selectarticle();       
+                </script>
+                {% endblock %}
+            
+            <div style="margin-left: 130px;"> 
+            <input style="width: 120px;height: 30px; border-radius:11px;" type="submit" value="Delete" onclick="return confirm ('Are you sure?')">
+            </div>
+        </form>
+   </div>
+
+
+{% endblock%}
+
+

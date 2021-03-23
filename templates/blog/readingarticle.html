@@ -1,0 +1,67 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<link rel= "stylesheet" type= "text/css" href= "../../static/styles/style.css">
+<div class="forming" style="width:500px;height:auto;margin-left:34%">
+
+    <form action="/readingarticle/<ReadingName>" method="POST">
+
+        <p style="font-size: 19px;margin:10px 0px 5px 27%"> <b>{{ReadingArticle.ArticleName}} </b> </p> 
+
+        <p>{{ReadingArticle.ArticleText}} </p>
+ 
+    <div style="margin:0px 0px 15px 34%;"> 
+        <input style="width: 120px;height: 30px; border-radius:11px;" type="submit" value="Done">
+    </div>
+
+    </form>
+</div>
+
+<span style="width: 90px;height: 20px; border-radius:11px; margin-left:58%" type="submit" value="Comment" onclick="openComment()"> <p style="font-weight: bold;">COMMENTS</p> </span>
+
+<div style="display: none;" id="makecomment" class="makecomment">
+    <form action="/commentingarticle" method="POST">        
+        <textarea style="height: 100%;width: 300px;margin:8px;font-size:16pt;font-family:Georgia, 'Times New Roman', Times, serif" rows = "3" cols = "50" name = "commenttext"></textarea>
+        <div class="commentactionbtns">
+        <a href="javascript:void(0)" class="commentclosebtn" onclick="closeComment()">&cross;</a> <br>
+        <input class="commentsendbtn" style="height: 45px;" type="submit" value="&check;">
+        </div>    
+    </form>
+</div>
+
+<div class="articlecomments" id="articlecomments" style="display:none;">
+    {% for CN in range(0,CommentNumber) %}  
+    <div class="eacharticlecomment">
+        <div class="commentername">
+            <label style="font-size: 13px;font-weight: bold;margin:10px 0px 0px 10%;width: auto;">   {{CommenterUserNameList[CN]}}</label>
+        </div>
+        <div class ="commenttext">
+            <label style="font-size: 13px;width: auto;margin:2px 8px 2px 8px;">{{CommentList[CN]}}</label> 
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+
+<script>
+        
+function openComment() {
+    document.getElementById("makecomment").style.display = "block";
+    document.getElementById("makecomment").style.width = "370px";
+    document.getElementById("makecomment").style.height = "auto";
+    document.getElementById("articlecomments").style.display = "block";
+    document.getElementById("articlecomments").style.width = "278px";
+    document.getElementById("articlecomments").style.height = "auto";
+
+  }
+  
+  function closeComment() {
+    document.getElementById("makecomment").style.display = "none";
+    document.getElementById("articlecomments").style.display = "none";
+    
+  }
+
+</script>
+
+{% endblock %}

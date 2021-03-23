@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block title %} Admin {% endblock %}
+{% block content %}
+<div class="article">
+    <ul>
+    <li> <a href="/readarticle"> Read an article</a></li>
+        {%if session['isAuthor'] == "1"%}          <!-- Yazarların yapabileceği işler  -->
+             <li> <a href="/author/addarticle"> Add an article</a></li>
+             <li> <a href="/author/deletearticle"> Delete an article</a></li>
+             <li> <a href="/author/editarticle"> Edit an article</a></li>
+        {% else %}
+            <li> <a href="/beauthor"> Be Author</a> </li>
+        {% endif %}
+    </ul>       
+</div>
+    {% block content1 %} {% endblock %}
+{% endblock%}

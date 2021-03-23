@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel= "stylesheet" type= "text/css" href= "../static/styles/style.css">    
+    <title>{% block title %} Home {% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <div class ="heading" id = "mainnav">
+            <ul>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="/">Home</a>
+                {%if session['isOnline']%}              <!-- Online olanların yapabileceği işler  -->               
+                   {%if session['isAdmin'] == "1"%}     <!--------Admin Paneli   -->
+                           <a href="/admin">Admin</a>
+                    {% endif %}
+                <a href="/article">Article</a>
+                <a href="/logout">Logout</a>
+                <!-------KARSILAMA MESAJI   -->
+                <div class="welcome">
+                    <p style="color:rgb(228, 209, 168)">WELCOME {{ session['Name'] }} {{ session['Surname'] }}</p> 
+                </div> 
+                <!-- --   GİRİS İSLEMLERİ  ---- -->                      
+                {% else %}               
+                     <a href="/login">Login</a>
+                     <a href="/register">Register</a>
+                {% endif %}
+                 
+            </ul>
+        </div>  
+    </nav>
+ <div class="backgroundimage">
+      <body>
+
+      <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+      
+      <script>
+      function openNav() {
+        document.getElementById("mainnav").style.width = "250px";
+      }
+      
+      function closeNav() {
+        document.getElementById("mainnav").style.width = "0";
+      }
+      </script>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages%}
+        <script>
+            var messagesjson = '{{messages|tojson}}';
+            var messagesparsed = JSON.parse(messagesjson)
+            for (var i=0; i<messagesparsed.length; i++) {
+              alert(messagesparsed[i]);
+            }
+        </script>
+        {% endif %}
+      {% endwith %}
+    {% block content %} {% endblock %}
+    
+    <footer>
+      <div class="footer">
+        <h3 style="position:absolute;left:42%;">Welcome to my website have fun!</h3>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
+

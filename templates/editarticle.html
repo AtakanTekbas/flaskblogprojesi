@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% block title %} Edit an article {% endblock %}
+{% block content %}
+
+<div class="forming" style="height: 100px;width:412px;padding:20px;margin-left:38%">
+    <form action="/author/editarticle" method="POST">
+        <h3 style="margin: 0;margin-left:120px;">Edit an article</h3>
+        <p style="display:inline-block;width:180px;"> <b>Select the article:</b></p>
+        <select name="editarticle" id="editarticle"></select>
+
+        {% block javascript %}
+            <script>
+                     
+                function editarticle() 
+                    {
+                        var EditJson = '{{EditArticleList|tojson|safe}}';
+                        var EditParsed = JSON.parse(EditJson);                                                                             
+                        var select = document.getElementById("editarticle");
+                        for (var i=0; i<EditParsed.length;i++)
+                        {
+                        var option = document.createElement("option");
+                        option.text = EditParsed[i];    
+                        option.value = EditParsed[i];                    
+                        select.add(option);
+                        }
+                    }
+                editarticle();       
+            </script>
+        {% endblock %}
+
+        <div style="margin-left: 130px;"> 
+            <input style="width: 120px;height: 30px; border-radius:11px;" type="submit" value="Edit">
+        </div>
+    </form>
+</div>
+{% endblock%}

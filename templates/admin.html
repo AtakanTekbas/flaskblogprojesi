@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block title %} Admin {% endblock %}
+{% block content %}
+<div class="admin">
+    <ul>
+        <li>    <a href="/admin/userupdate">User Update</a>        </li>
+        <li>    <a href="/admin/userdemands">User Demands</a>       </li>
+    </ul>
+</div>
+    {% block admincontent %} {% endblock %}
+{% endblock%}

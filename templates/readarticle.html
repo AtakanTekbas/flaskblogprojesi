@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+{% block title %} Read an article {% endblock %}
+{% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <div class="forming" style="height: 180px; width:400px;margin-left:36%">
+        <form action="/readarticle" method="POST">
+            <p style="margin-left: 24%;margin-bottom:0px;"> <b>Select An Article To Read</b></p> <br>
+            <p style="width: 100px;display:inline-block;margin-left: 10%;margin-bottom: 5px;">Category: </p>
+
+            <select name="articlecategory" id="articlecategory">
+            </select> <br>
+            <p style="width: 100px;display:inline-block;margin-left: 10%;margin-top:10px;">Name: </p>
+            <select name="articlelist" id="articlelist">
+            </select> <br>
+            <div style="margin-left: 35%;"> 
+                <input style="width: 90px;height: 30px; border-radius:11px;" type="submit" value="Choose">
+            </div>
+        
+        {% block javascript %}
+            <script>
+
+                
+                 //GET ARTICLE CATEGORY LIST
+                function articlecategories() 
+                    {
+                        var CategoriesJson = '{{WholeCategoriesList|tojson|safe}}';
+                        var CategoriesParsed = JSON.parse(CategoriesJson);                                                                             
+                        var select = document.getElementById("articlecategory");
+                        for (var i=1; i-1<CategoriesParsed.length;i++)
+                        {
+                        var option = document.createElement("option");
+                        option.text = CategoriesParsed[i-1];    
+                        option.value = i;                    
+                        select.add(option);
+                        }
+                    }
+                articlecategories(); 
+                 // GET ARTICLE LIST
+
+                 articlecategory_select = document.getElementById('articlecategory')
+                 articlelist_select = document.getElementById('articlelist')
+
+                 articlecategory_select.onchange = function() {
+                    articlecategory = articlecategory_select.value;
+                    fetch('readarticle/' + articlecategory).then(function(response) {
+                        response.json().then(function(data) {
+                            optionHTML = '';
+                            for (article of data.articlelists)
+                            {
+                                optionHTML += '<option value="' + article + '"> ' + article + '</option>'  
+                            }
+                            articlelist_select.innerHTML = optionHTML;
+                        });
+                    });
+                }
+            </script>
+
+        {% endblock %}
+    </form>
+    </div>
+    
+    
+{% endblock%}
+    
+    

@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+{% block title %} Add an article {% endblock %}
+{% block content %}
+
+<div>
+    <form action="/author/addarticle" method="POST">
+        <div class = "forming" style="height:auto; width:550px;margin-left:33%">         
+            <label style="text-align: left;display: inline-block;width:150px;height:30px;" >Article Name:</label>
+            <input type="text" class="form-control" name="articlename" style="border-style:none;"> <br>
+
+            <label style="text-align: left;display: inline-block;width:150px;" >Category:</label>
+            <select name="articlecategory" id="articlecategory" style="width: 225px;">
+             <option value="1">Art</option>
+             <option value="2">War</option>
+             <option value="3">Politics</option>
+             <option value="4">Media</option>
+             <option value="5">Agriculture</option>
+             <option value="6">Defense Industry</option>
+             <option value="7">Sport</option>
+             <option value="8">Space</option>
+             <option value="9">History</option>
+            <option value="10">Foreign Language</option>
+            <option value="11">Computer Science</option>
+            </select>
+            <br>
+
+            <p>Write the article: </p>
+            <textarea style="height: 500px;width: 500px;font-size:16pt;font-family:Georgia, 'Times New Roman', Times, serif" rows = "30" cols = "70" name = "articletext"></textarea>
+       
+            <div style="margin:10px 0px 15px 40%;"> 
+                <input style="width: 90px;height: 30px; border-radius:11px;" type="submit" value="Done">
+            </div>
+       
+        </div>
+        
+       
+    </form>
+</div>
+
+    
+{% endblock%}

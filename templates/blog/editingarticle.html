@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+
+<link rel= "stylesheet" type= "text/css" href= "../../static/styles/style.css">
+<div class="forming" style="width:550px;height:auto;margin-left:33%">
+
+    <form action="/author/editarticle/<EditingName>" method="POST">
+        <h3 style="margin: 0;margin-left:170px;">Edit the article</h3> <br>
+        <p style="display:inline-block;width:200px;"> <b>New article name:</b></p>
+        <input style="height: 20px;" type="editedarticlename" name="editedarticlename" value="{{EditingArticle.ArticleName}}">
+        <br>
+        <p> <b>New article text: </b></p>
+        <textarea style="height: 500px;width: 500px;font-size:16pt;font-weight:normal;" rows = "30" cols = "70" name = "editedarticletext">{{EditingArticle.ArticleText}}</textarea>
+ 
+        <div style="margin:10px 0px 15px 40%;">
+            <input style="width: 90px;height: 30px; border-radius:11px;" type="submit" value="Done">
+        </div>
+
+    </form>
+</div>
+{% endblock%}

@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+{% block title %} Admin {% endblock %}
+{% block content %}
+    <div class="forming" style="width:500px; height:165px; padding: 30px;margin-left:35%">
+    <form action="/beauthor" method="POST">
+    <h3 style="margin: 0px 0px 15px 43%;">Be Author</h3>
+    <label style="width:240px"> Area of Specialization:</label>
+        <div class="specializationarea" style="display: inline-block;">
+            <select name="specializationcategory" id="specializationcategory"></select>
+        </div>
+    <label style="width: 240px;"> Experience(Year):</label>
+        <div class="Experience" style="display: inline-block;">
+            <select style="font-size: 15px;" id="experience" name="experience">
+                <option  value="0-2">0-2</option>
+                <option value="2-5">2-5</option>
+                <option value="5-10">5-10</option>
+                <option value="10+">10+</option>
+            </select>
+        </div>
+    <label style="width: 240px;"> LinkedIn:</label>
+        <input placeholder="/username" type="text" name="linkedin">
+        <input style="margin:15px 0px 0px 30%" type="submit" value="Apply">
+    </form>
+
+    {% block javascript %}
+    <script>
+        function specializationcategorylist() 
+            {
+            var CategoriesJson = '{{SpecializationCategoriesList|tojson|safe}}';
+            var CategoriesParsed = JSON.parse(CategoriesJson);                                                                             
+            var select = document.getElementById("specializationcategory");
+            for (var i=1; i-1<CategoriesParsed.length;i++)
+            {
+            var option = document.createElement("option");
+            option.text = CategoriesParsed[i-1];    
+            option.value = i;                    
+            select.add(option);
+            }
+        }
+        specializationcategorylist();
+    </script>
+    {% endblock %}
+
+
+    </div>
+
+
+{% endblock %}

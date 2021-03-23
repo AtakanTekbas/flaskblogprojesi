@@ -1,0 +1,63 @@
+{% extends 'home.html' %}
+{% block title %} Register {% endblock %}
+{% block content %}
+    <form action="/register" method="POST">
+    <div class = "forming" style="width: 460px;height: auto;margin-left:35%"> 
+       <div class="register">
+          <div class = "registertexts">
+     <div>
+        <input placeholder="  *Name" type="text" name="name">
+     </div>
+     <div>
+        <input placeholder=" *Surname" type="text" name="surname">
+     </div>
+     <div>
+        <input placeholder="  *Username" type="text" name="username">
+     </div>
+     <div>
+        <input placeholder="  *Email" type="email" name="email">
+     </div>
+     <div>
+        <input placeholder="  *Password" type="password" name="password" >
+     </div>
+   </div>
+     <div>
+        <p>  *Gender: </p>
+        <div class="Gender">
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+      </div>
+     </div>
+     <div>
+        <p>  *Hobby: </p>
+        <select name="hobby" id="hobby" style="width: 200px; height: 30px;">
+         <option value="Spor">Sport</option>
+         <option value="Muzik">Music</option>
+         <option value="Tiyatro">Theater</option>
+         <option value="Sinema">Cinema</option>
+         <option value="Dans">Dance</option>
+         <option value="Seyahat">Travel</option>
+         <option value="Paten">Roller Skate</option>
+         <option value="Kayak">Ski</option>
+         <option value="Bale">Ballet</option>
+         <option value="Boks">Boxing</option>
+         <option value="Kutuphane">Library</option>
+         <option value="Gezi">Trip</option>
+         <option value="Bisiklet">Bicycle</option>
+         <option value="Araba">Car</option>
+       </select>
+     </div>
+
+     
+     
+     <div style="margin:10px 0px 10px 170px;"> 
+         <input style="width: 90px;height: 30px; border-radius:11px;" type="submit" value="Submit">
+     </div>
+   </div>
+    </div>
+    </form>
+  {% endblock %}

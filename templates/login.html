@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+{% block title %} Login {% endblock %}
+{% block content %}
+  <form action ="/login" method="POST">  
+    <div class="forminglogin" style="width: 375px;height:auto; margin-left:37%">
+    <div>
+        <input placeholder="   Email" type="email" name="email" style="margin-bottom: 10px;width: 330px; height: 30px;"> 
+    </div>
+    <div>
+        <input placeholder="   Password" type="password" name="password" style="margin-bottom: 10px;width: 330px; height: 30px;">
+    </div>  
+    <div style="margin:15px 0px 10px 100px"> 
+      <input style="width: 150px;height: 30px; border-radius:8px;" type="submit" value="LOGIN">
+  </div>
+  </div>
+  </form>
+
+  {% endblock%}
+
+
+  

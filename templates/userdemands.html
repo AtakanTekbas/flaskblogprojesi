@@ -1,0 +1,31 @@
+{% extends 'admin.html' %}
+{% block title %} USERDEMANDS {% endblock %}
+{% block admincontent %}
+
+    <div class="forming" style="padding: 18px;width: 720px; height:auto;margin-left:29.6%;">
+        <div class="userdemands">
+        <table style="table-layout: auto;width:720px;">
+            <div class="demandheader">
+        <tr style="font-size: 16px;font-weight: bold;">
+            <td>USERNAME</td> <td> Specialization Area</td> <td> Experience </td> <td> LinkedIn </td> <td> Approve </td> <td> Reject </td>
+        </tr>
+            </div>
+        
+        {% for DN in range(0,DemandNumber) %}
+        <form action="/admin/userdemands" method="POST">
+        <tr>
+            <td name="Uname" >{{UserDemandsUnameList[DN]}}</td> <input type="hidden" name="Uname" value="{{UserDemandsUnameList[DN]}}" />
+            <td name="SCategory" >{{UserDemandsSCategoryList[DN]}}</td> <input type="hidden" name="SCategory" value="{{UserDemandsSCategoryList[DN]}}" />
+            <td name="Exp" >{{UserDemandsExpList[DN]}}</td> <input type="hidden" name="SCategory" value="{{UserDemandsExpList[DN]}}" />
+            <td name="Link" ><a href="{{UserDemandsLinkList[DN]}}">LinkedIn</a></td> <input type="hidden" name="Link" value="{{UserDemandsLinkList[DN]}}" />
+            <td><input style="width: 90px;height: 23px;background-color:rgb(0, 255, 0);color:white" type="submit" name="ACCEPT" value="ACCEPT"></td> 
+            <td><input style="width: 90px;height: 23px;background-color:rgb(255, 4, 4);color:white" type="submit" name="DENY" value="DENY"> </td>
+        </tr>
+    </form>             
+        {% endfor %}
+      
+                                                                                              
+        </table>
+    </div>
+    </div>
+{% endblock%}
